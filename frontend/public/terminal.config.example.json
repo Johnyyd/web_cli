@@ -1,0 +1,40 @@
+{
+  "username": "guest",
+  "hostname": "portfolio",
+  "welcomeMessage": "Welcome to Interactive Terminal Web v1.0.0! Type 'help' or 'guide' to see available commands.",
+  "defaultTheme": "ubuntu-green",
+  "userInfo": {
+    "name": "Alex Developer",
+    "role": "Senior Full-Stack Developer & Linux Enthusiast",
+    "bio": "Passionate about open-source architecture, cloud-native deployments, and building slick developer tooling."
+  },
+  "skills": [
+    {
+      "category": "Languages",
+      "items": ["TypeScript", "Python", "Go", "Rust", "SQL", "HTML/CSS"]
+    },
+    {
+      "category": "Frameworks & Libraries",
+      "items": ["React", "FastAPI", "Next.js", "Node.js", "TailwindCSS"]
+    },
+    {
+      "category": "DevOps & Tools",
+      "items": ["Docker", "Kubernetes", "Linux/Bash", "Git", "Nginx", "GitHub Actions"]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Interactive Terminal Web",
+      "description": "An open-source portfolio template styled exactly like a Linux/Ubuntu command line interface.",
+      "url": "https://github.com/example/interactive-terminal-web",
+      "techStack": ["React", "TypeScript", "FastAPI", "Docker", "Nginx"]
+    },
+    {
+      "name": "Cloud Infra Monitor",
+      "description": "Real-time infrastructure monitoring dashboard with automated incident alerting.",
+      "url": "https://github.com/example/cloud-infra-monitor",
+      "techStack": ["Python", "FastAPI", "Prometheus", "WebSockets"]
+    }
+  ],
+  "apiEndpoint": "https://backend.taildxxxxxx.ts.net/api/messages"
+}

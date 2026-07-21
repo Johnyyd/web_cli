@@ -1,0 +1,58 @@
+x-tailscale-common: &tailscale-common
+  image: tailscale/tailscale:latest
+  network_mode: host
+  environment: &tailscale-env
+    # https://login.tailscale.com/admin/settings/keys
+    - TS_AUTHKEY=${TS_AUTHKEY:-tskey-auth-XXXXX}
+    - TS_STATE_DIR=/var/lib/tailscale
+    - TS_USERSPACE=true
+    - TS_ACCEPT_DNS=false
+  restart: unless-stopped
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: terminal-frontend
+    restart: always
+    ports:
+      - "1000:80"
+    depends_on:
+      - backend
+    networks:
+      - terminal-net
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: terminal-backend
+    restart: always
+    ports:
+      - "1001:8000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - PORT=8000
+    networks:
+      - terminal-net
+
+  tunnel-frontend:
+    <<: *tailscale-common
+    container_name: tunnel-frontend
+    hostname: frontend
+    volumes:
+      - ./tunnels/frontend:/var/lib/tailscale
+
+  tunnel-backend:
+    <<: *tailscale-common
+    container_name: tunnel-backend
+    hostname: backend
+    volumes:
+      - ./tunnels/backend:/var/lib/tailscale
+
+networks:
+  terminal-net:
+    driver: bridge
+
